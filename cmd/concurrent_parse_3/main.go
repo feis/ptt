@@ -66,7 +66,7 @@ func main() {
 
 	var wg sync.WaitGroup
 
-	for i := 1; i <= 100; i++ {
+	for i := 1; i <= 10; i++ {
 		wg.Add(1)
 		url := fmt.Sprintf("https://www.ptt.cc/bbs/movie/index%d.html", i)
 		go func() {
