@@ -9,5 +9,5 @@ func main() {
 	xlsx.SetCellValue("Main", "B1", "world!")
 	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs("hello.xlsx")
+	xlsx.SaveAs("output.xlsx")
 }

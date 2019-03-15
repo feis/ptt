@@ -1,4 +1,4 @@
-package data
+package main
 
 import (
 	"fmt"
@@ -6,13 +6,11 @@ import (
 	"github.com/360EntSecGroup-Skylar/excelize"
 )
 
-// Board 裡存放一個 Ptt 看板的資料
-type Board struct {
+type board struct {
 	name     string
 	articles []*article
 }
 
-// Article 裡存放一個 Ptt 文章的資料
 type article struct {
 	title  string
 	author string
@@ -20,13 +18,7 @@ type article struct {
 	likes  int
 }
 
-// AddArticle 會新增一篇文章到看板裡
-func (b *Board) AddArticle(t, a, d string, l int) {
-	b.articles = append(b.articles, &article{t, a, d, l})
-}
-
-// ExportAsXlsx 會將整個看板資料 b 匯出為一個檔名為 fn 的 xlsx 檔案
-func (b *Board) ExportAsXlsx(fn string) {
+func exportAsXlsx(b *board, fn string) {
 	xlsx := excelize.NewFile()
 	index := xlsx.NewSheet(b.name)
 
@@ -47,5 +39,27 @@ func (b *Board) ExportAsXlsx(fn string) {
 
 	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs(fn)
+	xlsx.SaveAs("output.xlsx")
+}
+
+func main() {
+	b := &board{
+		name: "電影版",
+		articles: []*article{
+			&article{
+				title:  "假標題",
+				author: "假作者",
+				date:   "3/14",
+				likes:  5,
+			},
+			&article{
+				title:  "第二篇",
+				author: "不知道",
+				date:   "3/15",
+				likes:  -10,
+			},
+		},
+	}
+
+	exportAsXlsx(b, "output.xlsx")
 }

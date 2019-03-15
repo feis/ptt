@@ -1,4 +1,4 @@
-package data
+package data1
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"github.com/360EntSecGroup-Skylar/excelize"
 )
 
-// ExportAsXlsx 會將整個看板資料 b 匯出為一個檔名為 fn 的 xlsx 檔案
+// ExportAsXlsx 將看板資料 b 匯出成檔名為 fn 的 xlsx 檔案
 func ExportAsXlsx(b *Board, fn string) {
 	xlsx := excelize.NewFile()
 	index := xlsx.NewSheet(b.Name)
@@ -28,5 +28,5 @@ func ExportAsXlsx(b *Board, fn string) {
 
 	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs(fn)
+	xlsx.SaveAs("output.xlsx")
 }

@@ -1,8 +1,8 @@
 package data
 
-// NewBoard 會建構一個新的看板
-func NewBoard(name string) *Board {
+// NewBoard 會產生一個名稱為 n 的看板資料
+func NewBoard(n string) *Board {
 	return &Board{
-		name: name,
+		name: n,
 	}
 }

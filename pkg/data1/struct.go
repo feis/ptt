@@ -1,15 +1,15 @@
-package data
+package data1
 
-// Article 是存放文章資訊的結構
+// Board 裡存放一個 Ptt 看板的資料
+type Board struct {
+	Name     string
+	Articles []*Article
+}
+
+// Article 裡存放一個 Ptt 文章的資料
 type Article struct {
 	Title  string
 	Author string
 	Date   string
 	Likes  int
-}
-
-// Board 是存放看板資訊的結構
-type Board struct {
-	Name     string
-	Articles []Article
 }
