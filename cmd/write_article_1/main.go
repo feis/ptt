@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-    const bn = "電影版"
+	const bn = "電影版"
 
 	xlsx := excelize.NewFile()
 	index := xlsx.NewSheet(bn)
@@ -18,10 +18,10 @@ func main() {
 	xlsx.SetColWidth(bn, "A", "A", 20)
 	xlsx.SetColWidth(bn, "B", "B", 10)
 
-    xlsx.SetCellValue(bn, "A2", "假標題")
-    xlsx.SetCellValue(bn, "B2", "假作者")
-    xlsx.SetCellValue(bn, "C2", "3/14")
-    xlsx.SetCellValue(bn, "D2", "5")
+	xlsx.SetCellValue(bn, "A2", "假標題")
+	xlsx.SetCellValue(bn, "B2", "假作者")
+	xlsx.SetCellValue(bn, "C2", "3/14")
+	xlsx.SetCellValue(bn, "D2", "5")
 
 	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
