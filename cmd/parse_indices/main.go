@@ -9,7 +9,7 @@ import (
 	data "github.com/feis/ptt/pkg/data2"
 )
 
-func parse(url string, b *data.Board) {
+func download(url string, b *data.Board) {
 	resp, err := http.Get(url)
 
 	if err != nil {
@@ -48,7 +48,7 @@ func main() {
 
 	for i := 1; i <= 10; i++ {
 		url := fmt.Sprintf("https://www.ptt.cc/bbs/movie/index%d.html", i)
-		parse(url, b)
+		download(url, b)
 	}
 
 	b.ExportAsXlsx("output.xlsx")
