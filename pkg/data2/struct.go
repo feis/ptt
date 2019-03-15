@@ -49,3 +49,8 @@ func (b *Board) ExportAsXlsx(fn string) {
 	xlsx.DeleteSheet("Sheet1")
 	xlsx.SaveAs(fn)
 }
+
+// NumberOfArticles 會回傳現在已經有幾筆文章資料
+func (b *Board) NumberOfArticles() int {
+	return len(b.articles)
+}
