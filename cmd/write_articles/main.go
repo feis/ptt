@@ -39,7 +39,6 @@ func exportAsXlsx(bn string, as []*article, fn string) {
 
 func main() {
 	const bn = "電影版"
-
 	as := []*article{
 		&article{
 			title:  "假標題",
@@ -54,6 +53,5 @@ func main() {
 			likes:  -10,
 		},
 	}
-
 	exportAsXlsx(bn, as, "output.xlsx")
 }
