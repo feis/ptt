@@ -18,17 +18,17 @@ type article struct {
 	likes  int
 }
 
-func exportAsXlsx(b *board, fn string) {
+func exportAsXlsx(b *board, fn string) error {
 	xlsx := excelize.NewFile()
-	index := xlsx.NewSheet(b.name)
+	xlsx.NewSheet(b.name)
 
 	xlsx.SetCellValue(b.name, "A1", "文章標題")
 	xlsx.SetCellValue(b.name, "B1", "作者")
 	xlsx.SetCellValue(b.name, "C1", "日期")
 	xlsx.SetCellValue(b.name, "D1", "讚數")
 
-	xlsx.SetColWidth(b.name, "A", "A", 20)
-	xlsx.SetColWidth(b.name, "B", "B", 10)
+	xlsx.SetColWidth(b.name, "A", "A", 60)
+	xlsx.SetColWidth(b.name, "B", "B", 20)
 
 	for i, a := range b.articles {
 		xlsx.SetCellValue(b.name, fmt.Sprintf("A%d", i+2), a.title)
@@ -37,9 +37,8 @@ func exportAsXlsx(b *board, fn string) {
 		xlsx.SetCellValue(b.name, fmt.Sprintf("D%d", i+2), a.likes)
 	}
 
-	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs("output.xlsx")
+	return xlsx.SaveAs("output.xlsx")
 }
 
 func main() {
@@ -60,6 +59,9 @@ func main() {
 			},
 		},
 	}
-
-	exportAsXlsx(b, "output.xlsx")
+	err := exportAsXlsx(b, "output.xlsx")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }

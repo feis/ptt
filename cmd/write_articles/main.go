@@ -52,5 +52,9 @@ func main() {
 			likes:  -10,
 		},
 	}
-	exportAsXlsx(bn, as, "output.xlsx")
+	err := exportAsXlsx(bn, as, "output.xlsx")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }
