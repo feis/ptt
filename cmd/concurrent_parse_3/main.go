@@ -60,7 +60,7 @@ func main() {
 	start := time.Now()
 
 	c := make(chan *article)
-	q := make(chan bool)
+	done := make(chan bool)
 
 	b := data.NewBoard("電影板")
 
@@ -77,14 +77,14 @@ func main() {
 
 	go func() {
 		wg.Wait()
-		q <- true
+		close(done)
 	}()
 
 	for ok := true; ok; {
 		select {
 		case a := <-c:
 			b.AddArticle(a.title, a.author, a.date, a.likes)
-		case <-q:
+		case <-done:
 			ok = false
 		}
 	}
