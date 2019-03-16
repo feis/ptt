@@ -13,9 +13,9 @@ type article struct {
 	likes  int
 }
 
-func exportAsXlsx(bn string, as []*article, fn string) {
+func exportAsXlsx(bn string, as []*article, fn string) error {
 	xlsx := excelize.NewFile()
-	index := xlsx.NewSheet(bn)
+	xlsx.NewSheet(bn)
 
 	xlsx.SetCellValue(bn, "A1", "文章標題")
 	xlsx.SetCellValue(bn, "B1", "作者")
@@ -32,13 +32,12 @@ func exportAsXlsx(bn string, as []*article, fn string) {
 		xlsx.SetCellValue(bn, fmt.Sprintf("D%d", i+2), a.likes)
 	}
 
-	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs("output.xlsx")
+	return xlsx.SaveAs("output.xlsx")
 }
 
 func main() {
-	const bn = "電影版"
+	bn := "電影版"
 	as := []*article{
 		&article{
 			title:  "假標題",
