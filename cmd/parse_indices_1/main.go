@@ -51,6 +51,8 @@ func main() {
 		download(url, b)
 	}
 
+	fmt.Println("Number of articles:", b.NumberOfArticles())
+
 	err := b.ExportAsXlsx("output.xlsx")
 
 	if err != nil {

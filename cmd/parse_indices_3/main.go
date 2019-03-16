@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	data "github.com/feis/ptt/pkg/data2"
@@ -45,8 +44,6 @@ func download(url string, b *data.Board) (err error) {
 }
 
 func main() {
-	start := time.Now()
-
 	b := data.NewBoard("電影板")
 
 	for i := 1; i <= 10; i++ {
@@ -59,9 +56,6 @@ func main() {
 	}
 
 	fmt.Println("Number of articles:", b.NumberOfArticles())
-
-	// 因為存檔相當耗時且不穩定，所以我們就不計算存檔的時間
-	fmt.Println("Elapsed time:", time.Since(start))
 
 	err := b.ExportAsXlsx("output.xlsx")
 
