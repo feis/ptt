@@ -9,7 +9,7 @@ import (
 // ExportAsXlsx 將看板資料 b 匯出成檔名為 fn 的 xlsx 檔案
 func ExportAsXlsx(b *Board, fn string) error {
 	xlsx := excelize.NewFile()
-	index := xlsx.NewSheet(b.Name)
+	xlsx.NewSheet(b.Name)
 
 	xlsx.SetCellValue(b.Name, "A1", "文章標題")
 	xlsx.SetCellValue(b.Name, "B1", "作者")
@@ -26,7 +26,6 @@ func ExportAsXlsx(b *Board, fn string) error {
 		xlsx.SetCellValue(b.Name, fmt.Sprintf("D%d", i+2), a.Likes)
 	}
 
-	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
 	return xlsx.SaveAs("output.xlsx")
 }

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	data "github.com/feis/ptt/pkg/data1"
 )
 
@@ -22,6 +24,9 @@ func main() {
 			},
 		},
 	}
-
-	data.ExportAsXlsx(b, "output.xlsx")
+	err := data.ExportAsXlsx(b, "output.xlsx")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }

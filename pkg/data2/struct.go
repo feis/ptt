@@ -28,7 +28,7 @@ func (b *Board) AddArticle(t, a, d string, l int) {
 // ExportAsXlsx 會將整個看板資料 b 匯出為一個檔名為 fn 的 xlsx 檔案
 func (b *Board) ExportAsXlsx(fn string) error {
 	xlsx := excelize.NewFile()
-	index := xlsx.NewSheet(b.name)
+	xlsx.NewSheet(b.name)
 
 	xlsx.SetCellValue(b.name, "A1", "文章標題")
 	xlsx.SetCellValue(b.name, "B1", "作者")
@@ -45,7 +45,6 @@ func (b *Board) ExportAsXlsx(fn string) error {
 		xlsx.SetCellValue(b.name, fmt.Sprintf("D%d", i+2), a.likes)
 	}
 
-	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
 	return xlsx.SaveAs(fn)
 }

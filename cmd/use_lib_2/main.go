@@ -12,7 +12,6 @@ func main() {
 	b.AddArticle("第二篇", "不知道", "3/15", -10)
 
 	err := b.ExportAsXlsx("output.xlsx")
-
 	if err != nil {
 		fmt.Println(err)
 		return
