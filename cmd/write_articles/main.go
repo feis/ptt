@@ -22,8 +22,8 @@ func exportAsXlsx(bn string, as []*article, fn string) {
 	xlsx.SetCellValue(bn, "C1", "日期")
 	xlsx.SetCellValue(bn, "D1", "讚數")
 
-	xlsx.SetColWidth(bn, "A", "A", 20)
-	xlsx.SetColWidth(bn, "B", "B", 10)
+	xlsx.SetColWidth(bn, "A", "A", 60)
+	xlsx.SetColWidth(bn, "B", "B", 20)
 
 	for i, a := range as {
 		xlsx.SetCellValue(bn, fmt.Sprintf("A%d", i+2), a.title)

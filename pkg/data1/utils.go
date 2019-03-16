@@ -16,8 +16,8 @@ func ExportAsXlsx(b *Board, fn string) error {
 	xlsx.SetCellValue(b.Name, "C1", "日期")
 	xlsx.SetCellValue(b.Name, "D1", "讚數")
 
-	xlsx.SetColWidth(b.Name, "A", "A", 20)
-	xlsx.SetColWidth(b.Name, "B", "B", 10)
+	xlsx.SetColWidth(b.Name, "A", "A", 60)
+	xlsx.SetColWidth(b.Name, "B", "B", 20)
 
 	for i, a := range b.Articles {
 		xlsx.SetCellValue(b.Name, fmt.Sprintf("A%d", i+2), a.Title)
