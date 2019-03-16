@@ -8,7 +8,7 @@ import (
 
 func main() {
 	xlsx := excelize.NewFile()
-	index := xlsx.NewSheet("Main")
+	xlsx.NewSheet("Main")
 	xlsx.SetCellValue("Main", "A1", "Hello")
 	xlsx.SetCellValue("Main", "B1", "world!")
 	xlsx.DeleteSheet("Sheet1")
