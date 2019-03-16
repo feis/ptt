@@ -1,6 +1,10 @@
 package main
 
-import "github.com/360EntSecGroup-Skylar/excelize"
+import (
+	"fmt"
+
+	"github.com/360EntSecGroup-Skylar/excelize"
+)
 
 func main() {
 	xlsx := excelize.NewFile()
@@ -9,5 +13,8 @@ func main() {
 	xlsx.SetCellValue("Main", "B1", "world!")
 	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs("output.xlsx")
+	err := xlsx.SaveAs("output.xlsx")
+	if err != nil {
+		fmt.Println(err)
+	}
 }
