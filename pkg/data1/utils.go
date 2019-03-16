@@ -7,7 +7,7 @@ import (
 )
 
 // ExportAsXlsx 將看板資料 b 匯出成檔名為 fn 的 xlsx 檔案
-func ExportAsXlsx(b *Board, fn string) {
+func ExportAsXlsx(b *Board, fn string) error {
 	xlsx := excelize.NewFile()
 	index := xlsx.NewSheet(b.Name)
 
@@ -28,5 +28,5 @@ func ExportAsXlsx(b *Board, fn string) {
 
 	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs("output.xlsx")
+	return xlsx.SaveAs("output.xlsx")
 }

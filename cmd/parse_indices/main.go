@@ -51,5 +51,10 @@ func main() {
 		download(url, b)
 	}
 
-	b.ExportAsXlsx("output.xlsx")
+	err := b.ExportAsXlsx("output.xlsx")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }

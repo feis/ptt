@@ -59,5 +59,10 @@ func main() {
 	// 因為存檔相當耗時且不穩定，所以我們就不計算存檔的時間
 	fmt.Println("Elapsed time:", time.Since(start))
 
-	b.ExportAsXlsx("output.xlsx")
+	err := b.ExportAsXlsx("output.xlsx")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }

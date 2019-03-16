@@ -45,5 +45,9 @@ func main() {
 			b.AddArticle(t.Text(), a.Text(), d.Text(), ls)
 		})
 
-	b.ExportAsXlsx("output.xlsx")
+	err = b.ExportAsXlsx("output.xlsx")
+
+	if err != nil {
+		fmt.Println(err)
+	}
 }

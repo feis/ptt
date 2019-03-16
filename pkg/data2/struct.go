@@ -26,7 +26,7 @@ func (b *Board) AddArticle(t, a, d string, l int) {
 }
 
 // ExportAsXlsx 會將整個看板資料 b 匯出為一個檔名為 fn 的 xlsx 檔案
-func (b *Board) ExportAsXlsx(fn string) {
+func (b *Board) ExportAsXlsx(fn string) error {
 	xlsx := excelize.NewFile()
 	index := xlsx.NewSheet(b.name)
 
@@ -47,7 +47,7 @@ func (b *Board) ExportAsXlsx(fn string) {
 
 	xlsx.SetActiveSheet(index)
 	xlsx.DeleteSheet("Sheet1")
-	xlsx.SaveAs(fn)
+	return xlsx.SaveAs(fn)
 }
 
 // NumberOfArticles 會回傳現在已經有幾筆文章資料
