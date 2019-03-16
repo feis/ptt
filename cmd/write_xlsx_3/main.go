@@ -8,10 +8,10 @@ import (
 
 func main() {
 	xlsx := excelize.NewFile()
-	index := xlsx.NewSheet("Main")
-	xlsx.SetActiveSheet(index)
+	xlsx.NewSheet("Main")
 	err := xlsx.SaveAs("output.xlsx")
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 }
