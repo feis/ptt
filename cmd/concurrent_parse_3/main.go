@@ -60,7 +60,6 @@ func main() {
 	start := time.Now()
 
 	c := make(chan *article)
-	done := make(chan bool)
 
 	b := data.NewBoard("電影板")
 
@@ -77,16 +76,11 @@ func main() {
 
 	go func() {
 		wg.Wait()
-		close(done)
+		close(c)
 	}()
 
-	for ok := true; ok; {
-		select {
-		case a := <-c:
-			b.AddArticle(a.title, a.author, a.date, a.likes)
-		case <-done:
-			ok = false
-		}
+	for a := range c {
+		b.AddArticle(a.title, a.author, a.date, a.likes)
 	}
 
 	fmt.Println("Number of articles:", b.NumberOfArticles())
