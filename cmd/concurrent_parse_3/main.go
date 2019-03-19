@@ -64,7 +64,6 @@ func main() {
 	b := data.NewBoard("電影板")
 
 	var wg sync.WaitGroup
-
 	for i := 1; i <= 10; i++ {
 		wg.Add(1)
 		url := fmt.Sprintf("https://www.ptt.cc/bbs/movie/index%d.html", i)
