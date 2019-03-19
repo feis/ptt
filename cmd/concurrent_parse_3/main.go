@@ -59,10 +59,8 @@ func download(url string, c chan *article) {
 func main() {
 	start := time.Now()
 
-	c := make(chan *article)
-
 	b := data.NewBoard("電影板")
-
+	c := make(chan *article)
 	var wg sync.WaitGroup
 	for i := 1; i <= 10; i++ {
 		wg.Add(1)
