@@ -31,7 +31,7 @@ func exportAsXlsx(bn string, a *article, fn string) error {
 	xlsx.SetCellValue(bn, "D2", a.likes)
 
 	xlsx.DeleteSheet("Sheet1")
-	return xlsx.SaveAs("output.xlsx")
+	return xlsx.SaveAs(fn)
 }
 
 func main() {

@@ -27,5 +27,5 @@ func ExportAsXlsx(b *Board, fn string) error {
 	}
 
 	xlsx.DeleteSheet("Sheet1")
-	return xlsx.SaveAs("output.xlsx")
+	return xlsx.SaveAs(fn)
 }

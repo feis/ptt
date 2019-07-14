@@ -33,7 +33,7 @@ func exportAsXlsx(bn string, as []*article, fn string) error {
 	}
 
 	xlsx.DeleteSheet("Sheet1")
-	return xlsx.SaveAs("output.xlsx")
+	return xlsx.SaveAs(fn)
 }
 
 func main() {
